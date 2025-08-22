@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carmed - Análise de Marketing</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    transition: all 0.5s ease;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.9);
+    padding: 10px 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover { opacity: 0.7; }
+
+nav select {
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content {
+    margin-top: 70px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+section {
+    padding: 20px;
+    border-bottom: 1px solid;
+    transition: all 0.5s ease;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    transition: all 0.5s ease;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid;
+    transition: all 0.5s ease;
+}
+
+/* --- Glow Animation --- */
+@keyframes glow {
+    0%,100% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+    50% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+/* --- Glitch Animation --- */
+@keyframes glitch {
+    0% { transform: translate(0); opacity:1; }
+    20% { transform: translate(-2px, 2px); opacity:0.8; }
+    40% { transform: translate(2px, -2px); opacity:0.9; }
+    60% { transform: translate(-1px, 1px); opacity:0.85; }
+    80% { transform: translate(1px, -1px); opacity:0.9; }
+    100% { transform: translate(0); opacity:1; }
+}
+
+.glitch {
+    position: relative;
+    display: inline-block;
+    animation: glitch 0.3s infinite, glow 1.5s infinite alternate;
+}
+
+/* --- Modos --- */
+/* 1. Cyberpunk */
+.cyberpunk { background-color: #0a0a0a; color: #00ff9f; }
+.cyberpunk h1 { color: #bd00ff; }
+.cyberpunk h2 { color: #bd00ff; }
+.cyberpunk h3 { color: #00b8ff; }
+.cyberpunk nav { background: rgba(10,10,10,0.9); }
+.cyberpunk nav a { color: #00ff9f; }
+.cyberpunk select { background-color: #00ff9f; color: #0a0a0a; }
+.cyberpunk .card { background: rgba(0,0,0,0.7); border: 1px solid #001eff; }
+
+/* 2. Arcane Jinx */
+.arcane-jinx { background-color: #1e0a2c; color: #f0f0f0; }
+.arcane-jinx h1 { color: #ff3ca6; }
+.arcane-jinx h2 { color: #00ffff; }
+.arcane-jinx h3 { color: #ff3ca6; }
+.arcane-jinx nav { background: rgba(30,10,44,0.95); }
+.arcane-jinx nav a { color: #ff3ca6; }
+.arcane-jinx select { background-color: #ff3ca6; color: #1e0a2c; }
+.arcane-jinx .card { background: rgba(40,10,60,0.85); border: 1px solid #00ffff; }
+
+/* 3. Arcane Vi */
+.arcane-vi { background-color: #2c0a0a; color: #fff2e5; }
+.arcane-vi h1 { color: #ff4c4c; }
+.arcane-vi h2 { color: #ff2a6d; }
+.arcane-vi h3 { color: #ffd700; }
+.arcane-vi nav { background: rgba(44,10,10,0.95); }
+.arcane-vi nav a { color: #ff4c4c; }
+.arcane-vi select { background-color: #ff4c4c; color: #2c0a0a; }
+.arcane-vi .card { background: rgba(60,10,10,0.85); border: 1px solid #ff2a6d; }
+
+/* 4. Arcane Ekko */
+.arcane-ekko { background-color: #0a1e2c; color: #e0f7ff; }
+.arcane-ekko h1 { color: #00ffff; }
+.arcane-ekko h2 { color: #9b5de5; }
+.arcane-ekko h3 { color: #00ffff; }
+.arcane-ekko nav { background: rgba(10,30,44,0.95); }
+.arcane-ekko nav a { color: #00ffff; }
+.arcane-ekko select { background-color: #00ffff; color: #0a1e2c; }
+.arcane-ekko .card { background: rgba(10,20,40,0.85); border: 1px solid #9b5de5; }
+</style>
+</head>
+<body class="cyberpunk">
+
+<nav>
+    <a href="#marketing">Marketing</a>
+    <a href="#comportamento">Comportamento</a>
+    <a href="#gestao">Gestão de Marca</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#critica">Análise Crítica</a>
+    <select id="modoSelect" onchange="changeMode(this.value)">
+        <option value="cyberpunk">Cyberpunk</option>
+        <option value="arcane-jinx">Arcane Jinx</option>
+        <option value="arcane-vi">Arcane Vi</option>
+        <option value="arcane-ekko">Arcane Ekko</option>
+    </select>
+</nav>
+
+<div class="content">
+    <section id="marketing">
+        <h1 class="glitch">1. Marketing e Posicionamento</h1>
+        <div class="card">
+            <h3 class="glitch">Diferenciação</h3>
+            <p>O Carmed se destacou em um mercado saturado ao investir em design moderno, sabores únicos e embalagens colecionáveis, atraindo o público jovem.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Marketing Digital e Influenciadores</h3>
+            <p>Parcerias estratégicas com influenciadores no Instagram e TikTok geraram viralidade. Campanhas de desafios, unboxings e promoções aumentaram o alcance.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Design e Sabores</h3>
+            <p>Embalagens coloridas e visualmente atraentes tornam o produto instagramável. Sabores exclusivos estimulam curiosidade e colecionabilidade, impactando a decisão de compra.</p>
+        </div>
+    </section>
+
+    <section id="comportamento">
+        <h2 class="glitch">2. Comportamento do Consumidor</h2>
+        <div class="card">
+            <h3 class="glitch">Fenômeno Jovem</h3>
+            <p>O Carmed se tornou um fenômeno ao unir apelo visual, sabores diversificados e marketing de influência, criando uma comunidade de fãs e item aspiracional.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Apelo Estético</h3>
+            <p>O conceito de produto colecionável e instagramável transforma o uso em experiência de lifestyle, gerando desejo além da funcionalidade.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Escassez e Edições Limitadas</h3>
+            <p>Sabores limitados e colaborações especiais reforçam exclusividade, criando urgência na compra e incentivando compartilhamento nas redes sociais.</p>
+        </div>
+    </section>
+
+    <section id="gestao">
+        <h2 class="glitch">3. Gestão de Marca e Produto</h2>
+        <div class="card">
+            <h3 class="glitch">Diversificação de Sabores</h3>
+            <p>Oferecer diferentes sabores mantém o interesse do público, mas excesso pode diluir a identidade da marca se não houver conexão com o posicionamento original.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Co-branding</h3>
+            <p>Parcerias com marcas consolidadas trazem credibilidade instantânea, mas risco é que a marca Carmed seja ofuscada pelo parceiro.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Manutenção do Interesse</h3>
+            <p>Renovar campanhas, lançar edições limitadas e engajar nas redes sociais são essenciais para prolongar a relevância do produto de caráter “moda”.</p>
+        </div>
+    </section>
+
+    <section id="resultados">
+        <h2 class="glitch">4. Resultados e Impactos</h2>
+        <div class="card">
+            <h3 class="glitch">Efeito Spillover</h3>
+            <p>O sucesso do Carmed pode gerar interesse em outros produtos da Cimed, aumentando reconhecimento e tráfego para a marca principal.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Branding Emocional</h3>
+            <p>Carmed conecta o consumidor a experiências positivas, como diversão, estética e exclusividade, tornando o produto desejável pelo sentimento que gera.</p>
+        </div>
+    </section>
+
+    <section id="critica">
+        <h2 class="glitch">5. Análise Crítica</h2>
+        <div class="card">
+            <h3 class="glitch">Críticas ao Marketing</h3>
+            <p>Dependência de influenciadores e tendências pode tornar a marca vulnerável. Foco no apelo visual pode ofuscar atributos funcionais.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Sustentabilidade</h3>
+            <p>O modelo é emocional e de moda, não necessariamente sustentável. Para ser considerado sustentável, precisaria incluir ações sociais ou ambientais.</p>
+        </div>
+        <div class="card">
+            <h3 class="glitch">Riscos Futuros</h3>
+            <p>Saturação do mercado, perda de interesse do público jovem e dependência de edições limitadas podem comprometer a longevidade do sucesso.</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 Análise Carmed | Modos Cyberpunk, Jinx, Vi & Ekko</p>
+</footer>
+
+<script>
+const modos = ['cyberpunk','arcane-jinx','arcane-vi','arcane-ekko'];
+function changeMode(selected) {
+    modos.forEach(m => document.body.classList.remove(m));
+    document.body.classList.add(selected);
+}
+</script>
+
+</body>
+</html>
